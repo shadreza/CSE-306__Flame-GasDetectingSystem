@@ -18,9 +18,11 @@ void setup(){
   pinMode(4, INPUT);
   
 //mq4 gas sensor  
-  lcd.begin(16, 2);
   pinMode(MQPin, INPUT_PULLUP);
+
+//buzzer + lcd initialization 
   pinMode(buzzer, OUTPUT);
+  lcd.begin(16, 2);
   lcd.setCursor(2, 0);
   lcd.print("GAS & Flame");
   lcd.setCursor(4, 1);
