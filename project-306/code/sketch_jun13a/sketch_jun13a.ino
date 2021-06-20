@@ -21,9 +21,9 @@ void setup(){
   lcd.begin(16, 2);
   pinMode(MQPin, INPUT_PULLUP);
   pinMode(buzzer, OUTPUT);
-  lcd.setCursor(5, 0);
+  lcd.setCursor(2, 0);
   lcd.print("GAS & Flame");
-  lcd.setCursor(3, 1);
+  lcd.setCursor(4, 1);
   lcd.print("DETECTOR");
   delay(1000);
   lcd.clear();
@@ -45,21 +45,24 @@ void loop()
     delay(200);
   } else {
     digitalWrite(LED, LOW);
+    digitalWrite(buzzer, LOW); 
   }
 
 //  gas loop
   int gas_value = digitalRead(MQPin);
   if(gas_value==HIGH) {
     digitalWrite(buzzer, HIGH);
+    digitalWrite(LED, HIGH);
     lcd.setCursor(6, 0);
     lcd.print("GAS");
     lcd.setCursor(3, 1);
     lcd.print("DETECTED");
     delay(200);
     lcd.clear();
-    delay(200);  
+    delay(200); 
   } else {
     lcd.clear();
     digitalWrite(buzzer, LOW); 
+    digitalWrite(LED, LOW);
   }
 }
